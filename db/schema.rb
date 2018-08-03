@@ -10,17 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_02_115348) do
+ActiveRecord::Schema.define(version: 2018_08_03_065708) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
-    t.bigint "user_id"
-    t.bigint "room_id"
+    t.bigint "users_id"
+    t.bigint "rooms_id"
     t.boolean "seen"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_messages_on_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["rooms_id"], name: "index_messages_on_rooms_id"
+    t.index ["users_id"], name: "index_messages_on_users_id"
+  end
+
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -40,4 +46,6 @@ ActiveRecord::Schema.define(version: 2018_08_02_115348) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "messages", "rooms", column: "rooms_id"
+  add_foreign_key "messages", "users", column: "users_id"
 end
