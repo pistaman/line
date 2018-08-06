@@ -11,11 +11,11 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
     alert(data['message']);
   },
 
-  speak: function () {
-    return this.perform('speak');
-    // this.perform('speak', {
-    //   message: message
-    // });
+  speak: function (message) {
+    // return this.perform('speak');
+    return this.perform('speak', {
+      message: message
+    });
   }
 });
 

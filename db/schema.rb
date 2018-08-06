@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_08_03_065708) do
     t.text "content"
     t.bigint "users_id"
     t.bigint "rooms_id"
-    t.boolean "seen"
+    t.boolean "seen", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rooms_id"], name: "index_messages_on_rooms_id"
