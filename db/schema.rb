@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_03_065708) do
+ActiveRecord::Schema.define(version: 2018_08_06_082631) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "content"
-    t.bigint "users_id"
-    t.bigint "rooms_id"
-    t.boolean "seen", default: false
+    t.text "content", null: false
+    t.bigint "users_id", null: false
+    t.bigint "rooms_id", null: false
+    t.boolean "seen", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rooms_id"], name: "index_messages_on_rooms_id"

@@ -1,4 +1,6 @@
-App.room = App.cable.subscriptions.create("RoomChannel", {
+App.room = App.cable.subscriptions.create({
+  channel: "RoomChannel",
+  room_id: $('#messages').data('room_id'),
   connected: function () {
     // Called when the subscription is ready for use on the server
   },
@@ -8,7 +10,7 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
   },
 
   received: function (data) {
-    alert(data['message']);
+    $('#messages').append(data['message']);
   },
 
   speak: function (message) {

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'rooms#show'
+  get 'rooms/:id', to: 'rooms#show'
   devise_for :users
   mount ActionCable.server => '/cable'
 end
