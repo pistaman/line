@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_06_082631) do
+ActiveRecord::Schema.define(version: 2018_08_07_014309) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
-    t.bigint "users_id", null: false
-    t.bigint "rooms_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
     t.boolean "seen", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["rooms_id"], name: "index_messages_on_rooms_id"
-    t.index ["users_id"], name: "index_messages_on_users_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -46,6 +46,6 @@ ActiveRecord::Schema.define(version: 2018_08_06_082631) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "messages", "rooms", column: "rooms_id"
-  add_foreign_key "messages", "users", column: "users_id"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
 end
