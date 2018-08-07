@@ -29,7 +29,7 @@ document.addEventListener('turbolinks:load', function () {
       connected: function () { },
       disconnected: function () { },
       received: function (data) {
-        return $('#messages').append(data['message']);
+        $('#messages').append(data['message']);
       },
       speak: function (message) {
         return this.perform('speak', {
