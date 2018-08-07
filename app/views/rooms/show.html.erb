@@ -1,5 +1,7 @@
 <h1>LINE</h1>
-<div id="messages" data-room-id="<%= @room.id %>">
+<%= current_user.email %><br>
+<%= @room.name %>
+<div id="messages" data-room_id="<%= @room.id %>">
   <%= render @messages %>
 </div>
 <form>
