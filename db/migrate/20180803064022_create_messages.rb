@@ -4,7 +4,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.text :content
       t.references :user, foreign_key: true
       t.bigint :room_id, foreign_key: true
-      t.boolean :seen
+      t.boolean :seen,default: false
 
       t.timestamps
     end
