@@ -1,4 +1,8 @@
-<h2>Room</h2>
+<header>
+  <h2>Room</h2>
+  <p><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></p>
+</header>
+
 <ul>
   <% @rooms.each do |room| %>
     <li><a href="room/<%= room.id %>"><%= room.name %></a></li>
@@ -9,4 +13,3 @@
   <%= f.text_field name="room[name]",placeholder:'ROOM1' %>
   <%= f.submit "作成", id: "room_add" %>
 <% end %>
-<p><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></p>

@@ -1,10 +1,30 @@
-<h1>LINE</h1>
-<%= current_user.email %><br>
-<%= @room.name %>
-<div id="messages" data-room_id="<%= @room.id %>">
-  <%= render @messages %>
+<header class="chat__header">
+  <h1 class="chat__header--title">LINE</h1>
+  <p><span><%= current_user.email %></span><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></p>
+</header>
+
+<div class="chat">
+  <div class="chat__rooms">
+    <ul>
+      <% @rooms.each do |room| %>
+        <li><a href="room/<%= room.id %>"><%= room.name %></a></li>
+      <% end %>
+    </ul>
+    <%= form_with url:"/create" do |f| %>
+      <%= f.label "ROOMを追加" %>
+      <%= f.text_field name="room[name]",placeholder:'ROOM1' %>
+      <%= f.submit "作成", id: "room_add" %>
+    <% end %>
+  </div>
+
+  <div class="chat__contents">
+    <h2 class="chat__contents-title"><%= @room.name %></h2>
+    <div class="chat__contents-wrapper" id="messages" data-room_id="<%= @room.id %>">
+      <%= render @messages %>
+    </div>
+    <form>
+      <label>Say something:</label><br>
+      <input type="text" data-behavior="room_speaker">
+    </form>
+  </div>
 </div>
-<form>
-  <label>Say something:</label><br>
-  <input type="text" data-behavior="room_speaker">
-</form>

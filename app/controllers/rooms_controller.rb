@@ -1,20 +1,17 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @rooms = Room.all
-  end
-
   def create
     @room = Room.new(room_params)
     if @room.save
-      redirect_to action: :index , notice: '作成しました'
+      redirect_to action: :show , notice: '作成しました'
     else
-      redirect_to action: :index , flash: {error: '作成できませんでした'}
+      redirect_to action: :show , flash: {error: '作成できませんでした'}
     end
   end
 
   def show
+    @rooms = Room.all
     @room = Room.find(params[:id])
     @messages =  @room.messages
   end
