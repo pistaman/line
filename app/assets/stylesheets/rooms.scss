@@ -1,3 +1,86 @@
-// Place all the styles related to the rooms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-family: "Raleway", sans-serif;
+}
+
+.chat {
+  margin-left: 20px;
+  display: flex;
+
+  &__header {
+    background-color: #263147;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--title {
+      color: #fff;
+      margin: 10px 0 10px 20px;
+    }
+    & a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 20px;
+
+      &:hover {
+        color: #bbb;
+      }
+    }
+    & p {
+      color: #fff;
+
+      & span {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__rooms {
+    width: 30%;
+    margin: 0 auto;
+    border-right: 2px solid #eee;
+  }
+
+  &__contents {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  &__contents-wrapper {
+    padding: 10px;
+    line-height: 2em;
+    background-color: #fcfcff;
+  }
+
+  &__contents-title {
+    color: #666;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+    padding: 18px 0;
+  }
+}
+
+.chat-contents-message {
+  $_ancestor: &;
+  margin-bottom: 10px;
+
+  &[data-speaker="true"] {
+    text-align: right;
+
+    #{$_ancestor}__text {
+      color: #444;
+      background-color: #b5ed8f;
+    }
+  }
+
+  &__text {
+    color: #444;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+    padding: 4px 10px;
+  }
+}

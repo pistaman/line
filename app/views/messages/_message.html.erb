@@ -1,3 +1,5 @@
-<div class="message">
-  <p><%= "#{message.user.email}:#{message.content}" %></p>
+<% @is_current = current_user.id == message.user.id %>
+
+<div class="chat-contents-message" data-speaker=<%= "#{@is_current}" %>>
+  <p class="chat-contents-message__text"><%= "#{message.user.email} : #{message.content}" %></p>
 </div>
