@@ -3,7 +3,8 @@ body {
 }
 
 .chat {
-  margin-left: 20px;
+  min-height: 100vh;
+  background-color: #fcfcff;
   display: flex;
 
   &__header {
@@ -37,19 +38,21 @@ body {
 
   &__rooms {
     width: 30%;
+    background-color: #fff;
     margin: 0 auto;
+    padding-left: 20px;
     border-right: 2px solid #eee;
   }
 
   &__contents {
     width: 70%;
+    height: 100%;
     margin: 0 auto;
   }
 
   &__contents-wrapper {
     padding: 10px;
     line-height: 2em;
-    background-color: #fcfcff;
   }
 
   &__contents-title {
