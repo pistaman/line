@@ -5,9 +5,9 @@
 
 <div class="chat">
   <div class="chat__rooms">
-    <ul>
+    <ul class="chat__room-wrapper">
       <% @rooms.each do |room| %>
-        <li><a href="room/<%= room.id %>"><%= room.name %></a></li>
+        <li class="chat__room"><a href="room/<%= room.id %>"><%= room.name %></a></li>
       <% end %>
     </ul>
     <%= form_with url:"/create" do |f| %>
@@ -22,9 +22,8 @@
     <div class="chat__contents-wrapper" id="messages" data-room_id="<%= @room.id %>">
       <%= render @messages %>
     </div>
-    <form>
-      <label>Say something:</label><br>
-      <input type="text" data-behavior="room_speaker">
+    <form class="chat__form-text">
+      <input type="text" data-behavior="room_speaker" class="chat__input">
     </form>
   </div>
 </div>

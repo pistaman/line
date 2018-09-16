@@ -6,7 +6,8 @@ document.addEventListener('turbolinks:load', function () {
       connected: function () { console.log("connected OK"); },
       disconnected: function () { console.log("owata"); },
       received: function (data) {
-        return $('#messages').append(data['message']);
+        console.log(data['user_id']);
+        $('#messages').append(data['message']);
       },
       speak: function (message) {
         return this.perform('speak', {
@@ -23,3 +24,4 @@ document.addEventListener('turbolinks:load', function () {
     }
   });
 });
+
