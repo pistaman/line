@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: :show
 
   def create
     @room = Room.new(room_params)
@@ -20,4 +21,8 @@ end
 private
   def room_params
     params.require(:room).permit(:name)
+  end
+
+  def set_user
+    @user = current_user
   end
